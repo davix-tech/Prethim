@@ -1,91 +1,64 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-export const dynamic = "force-dynamic";
 
-export async function POST(request: Request) {
+const REDEN_API_URL = "https://reden.dcore.name.ng";
+
+export async function POST(req: Request) {
   try {
-    // Verify that the user is actually signed in to PRETHIM.
+    // 1. Verify the PRETHIM user is authenticated
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        {
-          ok: false,
-          error: "unauthorized",
-        },
+        { ok: false, error: "unauthorized" },
         { status: 401 }
       );
     }
 
-    const body = await request.json();
+    // 2. Read installation details
+    const body = await req.json();
 
-    const name = String(body?.name || "").trim();
-    const website = String(body?.website || "").trim();
+    const name =
+      typeof body.name === "string" ? body.name.trim() : "";
 
     if (!name) {
       return NextResponse.json(
-        {
-          ok: false,
-          error: "project_name_required",
-        },
+        { ok: false, error: "site_name_required" },
         { status: 400 }
       );
     }
 
-    if (!website) {
-      return NextResponse.json(
-        {
-          ok: false,
-          error: "website_required",
-        },
-        { status: 400 }
-      );
-    }
-
-    // These remain server-side secrets.
-    const redenUrl = process.env.REDEN_API_URL;
+    // 3. ADMIN_SECRET NEVER reaches the browser.
     const adminSecret = process.env.REDEN_ADMIN_SECRET;
 
-    if (!redenUrl || !adminSecret) {
-      console.error(
-        "[REDEN ONBOARD] Missing REDEN_API_URL or REDEN_ADMIN_SECRET"
-      );
+    if (!adminSecret) {
+      console.error("[REDEN ONBOARD] REDEN_ADMIN_SECRET is missing");
 
       return NextResponse.json(
-        {
-          ok: false,
-          error: "server_configuration_error",
-        },
+        { ok: false, error: "server_configuration_error" },
         { status: 500 }
       );
     }
 
-    // Server → REDEN.
-    const response = await fetch(
-      `${redenUrl.replace(/\/$/, "")}/api/v1/onboard`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Admin-Secret": adminSecret,
-        },
-        body: JSON.stringify({
-          name,
-          owner_email: session.user.email,
-        }),
-        cache: "no-store",
-      }
-    );
+    // 4. Server → REDEN
+    const response = await fetch(`${REDEN_API_URL}/api/v1/onboard`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-admin-secret": adminSecret,
+      },
+      body: JSON.stringify({
+        name,
+        owner_email: session.user.email,
+      }),
+      cache: "no-store",
+    });
 
-    const data = await response.json().catch(() => null);
+    const data = await response.json();
 
     if (!response.ok) {
-      console.error(
-        "[REDEN ONBOARD] REDEN returned:",
-        response.status,
-        data
-      );
+      console.error("[REDEN ONBOARD] REDEN rejected request:", data);
 
       return NextResponse.json(
         {
@@ -96,14 +69,14 @@ export async function POST(request: Request) {
       );
     }
 
+    // 5. Return only what the authenticated user needs
     return NextResponse.json({
       ok: true,
       siteId: data.siteId,
       apiKey: data.apiKey,
-      website,
     });
   } catch (error) {
-    console.error("[REDEN ONBOARD ERROR]", error);
+    console.error("[REDEN ONBOARD] Unexpected error:", error);
 
     return NextResponse.json(
       {
