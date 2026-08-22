@@ -1,44 +1,6 @@
-export const dynamic = "force-dynamic";
-
-import NextAuth, { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-
-if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-  throw new Error("Missing Google credentials in runtime environment.");
-}
-
-const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
-  pages: {
-    signIn: "/signin",
-    error: "/signin",
-  },
-  session: { strategy: "jwt" },
-  callbacks: {
-    async jwt({ token, account, profile }) {
-      if (account && profile) {
-        token.id = (profile as any).sub || account.providerAccountId;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session?.user) {
-        (session.user as any).id = token.id;
-      }
-      return session;
-    },
-    async redirect({ baseUrl }) {
-      // Hard anchors the post-login destination strictly to /dashboard
-      return `${baseUrl}/dashboard`;
-    },
-  },
-};
+import NextAuth from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
