@@ -69,11 +69,34 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Return only what the authenticated user needs
+    // 5. REDEN nests the created/existing site under `site`, e.g.
+    //    { success: true, existing: false, site: { site_id, api_key, ... } }
+    //    Reading data.siteId / data.apiKey directly (the old bug)
+    //    silently produces undefined here, which the frontend then
+    //    stores and later sends to /api/v1/verify -- which correctly
+    //    rejects an empty site_id as invalid. Guard against that
+    //    shape mismatch explicitly so a REDEN-side change loudly
+    //    fails here instead of silently propagating undefined.
+    const siteId = data?.site?.site_id;
+    const apiKey = data?.site?.api_key;
+
+    if (!siteId || !apiKey) {
+      console.error(
+        "[REDEN ONBOARD] Malformed REDEN response:",
+        data
+      );
+
+      return NextResponse.json(
+        { ok: false, error: "reden_returned_invalid_site_id" },
+        { status: 502 }
+      );
+    }
+
+    // 6. Return only what the authenticated user needs
     return NextResponse.json({
       ok: true,
-      siteId: data.siteId,
-      apiKey: data.apiKey,
+      siteId,
+      apiKey,
     });
   } catch (error) {
     console.error("[REDEN ONBOARD] Unexpected error:", error);
