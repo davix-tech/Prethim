@@ -5,8 +5,26 @@ import Link from "next/link";
 import { ArrowRight, Check, Clock, Zap, Shield, Server, GitBranch, Mail, Bell, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "PRETHIM- HOME OF ADAPTIVE APIs",
-  description: "Stop losing revenue to abandoned carts. Reden detects abandonment at the edge and triggers recovery before the session expires. Free tier available.",
+  title: "REDEN — Adaptive Commerce Orchestration",
+  description:
+    "REDEN helps ecommerce businesses interpret shopper behaviour, evaluate purchase intent, automate timely commerce actions and understand revenue opportunities.",
+  alternates: {
+    canonical: "/reden",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://www.prethim.name.ng/reden",
+    siteName: "PRETHIM",
+    title: "REDEN — Adaptive Commerce Orchestration | PRETHIM",
+    description:
+      "An adaptive commerce system that turns shopper behaviour and purchase intent into timely actions and revenue intelligence.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "REDEN — Adaptive Commerce Orchestration | PRETHIM",
+    description:
+      "Turn shopper behaviour and purchase intent into timely commerce actions with REDEN.",
+  },
 };
 
 export default function RedenPage() {
