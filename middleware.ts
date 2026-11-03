@@ -7,6 +7,7 @@ export default withAuth({
 });
 
 export const config = {
-  // Hardens only these exact routes. Completely leaves your homepage and auth endpoints alone.
-  matcher: ["/dashboard/:path*", "/reden/:path*"],
+  // Public marketing routes (including /reden) stay public.
+  // Workspace and installation routes require a valid NextAuth session.
+  matcher: ["/dashboard/:path*", "/reden-install/:path*"],
 };
