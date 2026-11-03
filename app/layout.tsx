@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description:
     "PRETHIM builds adaptive decision infrastructure: software that turns real-time signals and business context into intelligent, automated actions. Meet REDEN, our commerce decision product.",
   applicationName: "PRETHIM",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -52,6 +49,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#000000] text-[#f0f4ff] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "PRETHIM",
+              url: siteUrl,
+              description:
+                "PRETHIM builds adaptive decision infrastructure that turns real-time signals and business context into intelligent, automated actions.",
+              brand: {
+                "@type": "Brand",
+                name: "PRETHIM",
+              },
+              knowsAbout: [
+                "Adaptive decision infrastructure",
+                "Commerce orchestration",
+                "Behavioural intelligence",
+                "Software APIs",
+              ],
+            }),
+          }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>
