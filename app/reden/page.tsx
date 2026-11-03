@@ -30,6 +30,26 @@ export const metadata: Metadata = {
 export default function RedenPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "REDEN",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            url: "https://www.prethim.name.ng/reden",
+            description:
+              "REDEN is PRETHIM's adaptive commerce orchestration product. It interprets ecommerce shopper behaviour and purchase intent to support timely commerce actions, including abandoned-cart recovery, targeted offers and revenue intelligence.",
+            publisher: {
+              "@type": "Organization",
+              name: "PRETHIM",
+              url: "https://www.prethim.name.ng",
+            },
+          }),
+        }}
+      />
       {/* HEADER - Clean, no nonsense */}
       <header className="sticky top-0 z-50 border-b border-[#1E1812] bg-[#0A0908]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0A0908]/80">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -72,10 +92,12 @@ export default function RedenPage() {
                 </span>
               </div>
 
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF5A1F]">
+                REDEN BY PRETHIM
+              </p>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight text-[#F5F1EA]">
-                Stop losing{" "}
-                <span className="text-[#FF5A1F]">22%</span>
-                {" "}of your revenue.
+                Turn shopper behaviour into{" "}
+                <span className="text-[#FF5A1F]">better commerce decisions.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#ABA296] leading-relaxed max-w-md">
