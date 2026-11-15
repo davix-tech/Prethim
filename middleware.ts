@@ -7,7 +7,7 @@ export default withAuth({
 });
 
 export const config = {
-  // Public marketing routes (including /reden) stay public.
-  // Workspace and installation routes require a valid NextAuth session.
-  matcher: ["/dashboard/:path*", "/reden-install/:path*"],
+  // Temporary access: /dashboard is excluded from the auth middleware.
+  // Keep installation routes protected until normal authentication is restored.
+  matcher: ["/reden-install/:path*"],
 };
