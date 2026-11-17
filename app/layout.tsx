@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 
-const siteUrl = "https://www.prethim.name.ng";
+const siteUrl = "https://prethim.site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
