@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-export const metadata = { title: "Terms | PRETHIM" };
+export const metadata = {
+  title: "Terms",
+  description:
+    "Review the terms governing access to and use of PRETHIM products, services, and APIs.",
+  alternates: { canonical: "/terms" },
+  openGraph: { url: "/terms" },
+};
 
 export default function TermsPage() {
   return (
