@@ -5,8 +5,11 @@ import Link from "next/link";
 import { ArrowRight, Check, Clock, Zap, Shield, Server, GitBranch, Mail, Bell, ExternalLink, Users, Handshake, Building2, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Reden — Abandoned Cart Recovery That Actually Works",
-  description: "Stop losing revenue to abandoned carts. Reden detects abandonment at the edge and triggers recovery before the session expires. Free tier available.",
+  title: "PRETHIM Partner Program",
+  description:
+    "Explore strategic partnership opportunities with PRETHIM and help shape adaptive decision infrastructure.",
+  alternates: { canonical: "/partnership" },
+  robots: { index: false, follow: true },
 };
 
 export default function RedenPage() {
