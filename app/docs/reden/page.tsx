@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-export const metadata = { title: "REDEN API | PRETHIM" };
+export const metadata = {
+  title: "REDEN API",
+  description:
+    "Explore REDEN API integration, session decisioning, and adaptive commerce actions for ecommerce storefronts.",
+  alternates: { canonical: "/docs/reden" },
+  openGraph: { url: "/docs/reden" },
+};
 
 export default function RedenDocsPage() {
   return (
