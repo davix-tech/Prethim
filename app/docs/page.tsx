@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-export const metadata = { title: "Documentation | PRETHIM" };
+export const metadata = {
+  title: "Documentation",
+  description:
+    "Technical documentation for PRETHIM and REDEN, the adaptive commerce decision system for ecommerce storefronts.",
+  alternates: { canonical: "/docs" },
+  openGraph: { url: "/docs" },
+};
 
 export default function DocsPage() {
   return (
