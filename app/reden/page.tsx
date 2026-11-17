@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Clock, Zap, Shield, Server, GitBranch, Mail, Bell, ExternalLink } from "lucide-react";
 
+const siteUrl = "https://prethim.site";
+
 export const metadata: Metadata = {
   title: "REDEN — Adaptive Commerce Orchestration",
   description:
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://www.prethim.name.ng/reden",
+    url: `${siteUrl}/reden`,
     siteName: "PRETHIM",
     title: "REDEN — Adaptive Commerce Orchestration | PRETHIM",
     description:
@@ -45,7 +47,7 @@ export default function RedenPage() {
             publisher: {
               "@type": "Organization",
               name: "PRETHIM",
-              url: "https://www.prethim.name.ng",
+              url: siteUrl,
             },
           }),
         }}
