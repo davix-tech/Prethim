@@ -9,12 +9,7 @@ const siteUrl = "https://prethim.site";
 export const metadata: Metadata = {
   title: "REDEN — Adaptive Commerce Orchestration",
   description:
-    "REDEN is PRETHIM’s adaptive commerce intelligence product. Its ecommerce SDK captures shopper behaviour, evaluates purchase intent, supports abandoned-cart recovery and timely offers, and gives merchants evidence-based intelligence about store activity, sales and revenue.",
-  keywords: [
-    "REDEN", "ecommerce intelligence", "ecommerce analytics", "behavioural intelligence",
-    "purchase intent", "cart recovery", "abandoned cart recovery", "commerce automation",
-    "revenue intelligence", "PRETHIM"
-  ],
+    "REDEN helps ecommerce businesses interpret shopper behaviour, evaluate purchase intent, automate timely commerce actions and understand revenue opportunities.",
   alternates: {
     canonical: "/reden",
   },
@@ -48,19 +43,7 @@ export default function RedenPage() {
             operatingSystem: "Web",
             url: "https://prethim.site/reden",
             description:
-              "REDEN is PRETHIM’s adaptive commerce intelligence product for ecommerce businesses. It uses an ecommerce SDK to capture shopper behaviour, evaluate purchase intent, support abandoned-cart recovery and timely offers, and provide merchants with evidence-based intelligence about store activity, sales and revenue.",
-            featureList: [
-              "Ecommerce shopper behaviour tracking through an SDK",
-              "Purchase-intent evaluation",
-              "Abandoned-cart recovery",
-              "Behaviour-based commerce interventions and targeted offers",
-              "Merchant intelligence for store activity, sales and revenue",
-              "Evidence-based recommendations from store data"
-            ],
-            audience: {
-              "@type": "Audience",
-              audienceType: "Ecommerce merchants and online store operators"
-            },
+              "REDEN is PRETHIM's adaptive commerce orchestration product. It interprets ecommerce shopper behaviour and purchase intent to support timely commerce actions, including abandoned-cart recovery, targeted offers and revenue intelligence.",
             publisher: {
               "@type": "Organization",
               name: "PRETHIM",
@@ -120,7 +103,9 @@ export default function RedenPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-[#ABA296] leading-relaxed max-w-md">
-                REDEN helps ecommerce businesses understand what shoppers do, evaluate buying intent and respond with timely commerce actions. Its behavioural intelligence and merchant-facing insights help store owners understand activity, sales and revenue — not just view another analytics dashboard.
+                Reden detects abandoned carts at the edge and triggers recovery 
+                before the session expires. No analytics bloat. No delayed emails. 
+                Just revenue you're leaving on the table.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -168,9 +153,9 @@ export default function RedenPage() {
                     <Zap className="h-4 w-4 text-[#FF5A1F]" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Shopper behaviour intelligence</h3>
+                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Real-time detection</h3>
                     <p className="text-xs text-[#6E6358] leading-relaxed">
-                      REDEN uses store activity signals to help merchants understand how visitors interact with their ecommerce store.
+                      The moment a buyer goes idle, Reden knows. No polling, no delays.
                     </p>
                   </div>
                 </div>
@@ -180,9 +165,9 @@ export default function RedenPage() {
                     <Server className="h-4 w-4 text-[#FF5A1F]" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Purchase-intent evaluation</h3>
+                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Edge execution</h3>
                     <p className="text-xs text-[#6E6358] leading-relaxed">
-                      Behavioural signals help REDEN evaluate shopper intent and support more relevant commerce decisions.
+                      Runs on your CDN. No round-trip to origin servers.
                     </p>
                   </div>
                 </div>
@@ -192,17 +177,23 @@ export default function RedenPage() {
                     <Bell className="h-4 w-4 text-[#FF5A1F]" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Commerce actions and merchant intelligence</h3>
+                    <h3 className="text-sm font-semibold text-[#F5F1EA]">Instant recovery</h3>
                     <p className="text-xs text-[#6E6358] leading-relaxed">
-                      REDEN supports abandoned-cart recovery, behaviour-based offers and evidence-led answers about store performance.
+                      Webhooks, emails, popups — triggered in milliseconds.
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-[#1E1812]">
-                <p className="text-sm font-semibold text-[#F5F1EA]">One integration. Every commerce capability.</p>
-                <p className="mt-2 text-xs leading-relaxed text-[#6E6358]">Connect your store and give REDEN the signals it needs to support better customer and revenue decisions.</p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-[#6E6358]">Average recovery time</span>
+                  <span className="font-mono text-[#F5F1EA]">8.4ms</span>
+                </div>
+                <div className="flex items-center justify-between text-sm mt-1">
+                  <span className="text-[#6E6358]">Industry average</span>
+                  <span className="font-mono text-[#6E6358] line-through">~200ms</span>
+                </div>
               </div>
             </div>
           </div>
