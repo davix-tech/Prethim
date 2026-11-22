@@ -41,7 +41,7 @@ export default function RedenPage() {
             name: "REDEN",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web",
-            url: "https://www.prethim.name.ng/reden",
+            url: "https://prethim.site/reden",
             description:
               "REDEN is PRETHIM's adaptive commerce orchestration product. It interprets ecommerce shopper behaviour and purchase intent to support timely commerce actions, including abandoned-cart recovery, targeted offers and revenue intelligence.",
             publisher: {
